@@ -8,13 +8,15 @@ class Account
 	public string Password { get; set; }
 	public string Name { get; set; }
 	public string StudentNumber { get; set; }
+	public string AdminNumber { get; set; }
 
-	public Account(string username, string password, string name, string studentNumber)
+	public Account(string username, string password, string name, string studentNumber, string AdminNumber)
 	{
 		Username = username;
 		Password = password;
 		Name = name;
 		StudentNumber = studentNumber;
+		AdminNumber = adminNumber;
 	}
 }
 
@@ -53,6 +55,8 @@ class Program
 
 				switch (option)
 				{
+					case "0": LoginasAdmin();
+						break;
 					case "1":
 						Login();
 						break;
@@ -113,6 +117,7 @@ class Program
 	static void ShowLoginMenu()
 	{
 		Console.WriteLine("PUP HUB BULLETIN BOARD");
+		Console.WriteLine("0. Login as Admin");
 		Console.WriteLine("1. Login");
 		Console.WriteLine("2. Create an account");
 		Console.WriteLine("3. Exit");
@@ -340,4 +345,43 @@ class Program
 			Console.WriteLine("Account not found.");
 		}
 	}
+
+
+	class AdminAccess
+	{
+		public string AdminNumber;
+		public string Password;
+
+		public AdminAccess(string AdminNumber, string Password)
+		{
+			this.AdminNumber = AdminNumber;
+			this.Password = Password;
+		}
+		public void LoginasAdmin()
+		{
+			Console.WriteLine("Enter Admin Number: ");
+			Console.Read();
+			Console.WriteLine("Enter Password: ");
+			Console.Read();
+		if(AdminNumber =="Ad123" && Password == "222")
+		{
+			Console.WriteLine("SUCCESSFULLY LOGIN!");
+			Console.WriteLine("---------------------");
+			AdminMenu();
+		}
+			else
+			{
+				Console.WriteLine("INVALID DATA PLEASE TRY AGAIN LATER!");
+				ShowLoginMenu();
+			}
+			
+		static void AdminMenu()
+		{
+	        Console.WriteLine("1. Create a post");
+	        Console.WriteLine("2. Edit a post");
+		Console.WriteLine("3. Delete post of Users");
+		Console.WriteLine("4. List all posts of Admin");
+		Console.Write("Select a choice: ")
+		}
+		
 }
